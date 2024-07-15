@@ -1,8 +1,11 @@
-import { Router } from "express";
+import Router from "express";
+import loggedIn from "../middlewares/authenticator.js";
 
-router = Router()
+const router = Router()
 
-router.get('/', (req, res)=>{
-    
-    res.send('Welcome ', )
+router.get('/',  loggedIn, (req, res)=>{
+
+    res.send('Welcome ')
 })
+
+export default router
