@@ -6,8 +6,9 @@ import { User } from "../models/users.js";
 const router = Router()
 
 
-router.post('/join-habit',  async(req, res)=>{
-    const { userId, habitId } = req.body;
+router.get('/join-habit/:id',  async(req, res)=>{
+    const userId = req.user._id
+    const habitId = req.params.id
     console.log(userId, habitId)
 
     try {
@@ -22,8 +23,9 @@ router.post('/join-habit',  async(req, res)=>{
             habit.members.push(user.id)
             await habit.save()
         }
-
-        res.status(200).send('User successfully joined the habit');
+        
+        res.redirect('/')
+        // res.status(200).send('User successfully joined the habit');
     } catch (error) {
         console.log("Something went Wrong!", error)
     }

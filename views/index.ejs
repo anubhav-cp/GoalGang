@@ -70,10 +70,13 @@
                  <img src="/public/images/internet.png" alt="" class="w-[20px]" />
                </div>
              </div>
-             <div class="w-10 h-10 bg-pink-400 rounded-full flex justify-center items-center">
-               <!--  add people -->
-               <img src="/public/images/person.png" alt="" class="w-7" />
-             </div>
+             <div id="copy-url-container" class="w-10 h-10 bg-pink-400 rounded-full flex justify-center items-center cursor-pointer" onclick="copyUrl()">
+              <!-- public group -->
+              <span id="url-text" hidden>http://localhost:3000/join-habit/<%= habit._id %></span>
+                <img src="/public/images/person.png" alt="" class="w-[20px]" />
+              </button>
+            </div>
+            
            </div>
 
 
@@ -81,7 +84,7 @@
              <!-- class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black" -->
              <!--leaderboard and shit-->
              <ul class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black">
-               <li class="rounded-lg bg-gray-400 activity" >
+               <li class="rounded-lg bg-gray-400 activity">
                  <!--activity section-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -92,7 +95,7 @@
                    Activity
                  </a>
                </li>
-               <li class="rounded-lg leaderboard" >
+               <li class="rounded-lg leaderboard">
                  <!--leaderboard-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -103,7 +106,7 @@
                    Leaderboard
                  </a>
                </li>
-               <li class="rounded-lg about" >
+               <li class="rounded-lg about">
                  <!--about-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -116,7 +119,7 @@
                </li>
              </ul>
            </div>
-           <div class="w-full h-[75%] bg-gray-50 hidden leaderboardRank" >
+           <div class="w-full h-[75%] bg-gray-50 hidden leaderboardRank">
              <!--leaderboard to display on leaderboard click-->
              <div class="w-full h-full overflow-y-scroll scrollbar-hide cursor-pointer">
 
@@ -280,7 +283,7 @@
 
            <div class="w-[100%] h-16 py-2 absolute bottom-[10px] flex justify-center">
              <!--complete habit-->
-             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl habitComplete" >
+             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl habitComplete">
                Complete Habit
              </button>
            </div>
@@ -401,6 +404,21 @@
          const activityStatus = Array.from(document.querySelectorAll('.activityStatus'));
          const leaderboardRank = Array.from(document.querySelectorAll('.leaderboardRank'));
          const habitComplete = document.querySelectorAll('.habitComplete');
+         function copyUrl() {
+    // Get the URL text from the span element
+    const urlText = document.getElementById('url-text').innerText;
+
+    // Create a temporary input element to copy the URL
+    const tempInput = document.createElement('input');
+    tempInput.value = urlText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    // Optionally, show a notification or alert
+    alert('URL copied to clipboard!');
+  }
 
          const addClass = (elements, className) => {
            elements.classList.add(className)
