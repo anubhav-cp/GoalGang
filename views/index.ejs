@@ -81,7 +81,7 @@
              <!-- class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black" -->
              <!--leaderboard and shit-->
              <ul class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black">
-               <li class="rounded-lg bg-gray-400" id="activity">
+               <li class="rounded-lg bg-gray-400 activity" >
                  <!--activity section-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -92,7 +92,7 @@
                    Activity
                  </a>
                </li>
-               <li class="rounded-lg" id="leaderboard">
+               <li class="rounded-lg leaderboard" >
                  <!--leaderboard-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -103,7 +103,7 @@
                    Leaderboard
                  </a>
                </li>
-               <li class="rounded-lg" id="about">
+               <li class="rounded-lg about" >
                  <!--about-->
                  <a>
                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -116,7 +116,7 @@
                </li>
              </ul>
            </div>
-           <div class="w-full h-[75%] bg-gray-50 hidden" id="leaderboardRank">
+           <div class="w-full h-[75%] bg-gray-50 hidden leaderboardRank" >
              <!--leaderboard to display on leaderboard click-->
              <div class="w-full h-full overflow-y-scroll scrollbar-hide cursor-pointer">
 
@@ -221,7 +221,7 @@
              </div>
            </div>
            <!--leaderboard finish-->
-           <div id="aboutInfo" class="w-full h-[63%] bg-gray-100 hidden">
+           <div class="w-full h-[63%] bg-gray-100 hidden aboutInfo">
              <!--about start-->
              <div class="w-full h-full flex flex-col px-[10px] pt-5 overflow-y-scroll">
                <div>
@@ -251,17 +251,18 @@
                  <!--group member names finished-->
                </div>
                <div class="w-full flex justify-end pr-[10px] mb-[20px]">
-                 <a href="/leave-habit/<%= habit._id %>" class="h-9 w-20 text-xl bg-gray-300 text-black rounded-lg cursor-pointer">Leave </a>
+                 <a href="/leave-habit/<%= habit._id %>"
+                   class="h-9 w-20 text-xl bg-gray-300 text-black rounded-lg cursor-pointer">Leave </a>
                </div>
              </div>
 
            </div>
            <!--about finsh-->
-           <div id="activityStatus" class="w-full h-[63%]">
+           <div class="activityStatus" class="w-full h-[63%]">
              <!--activity start-->
-             
+
              <div class="w-full h-full overflow-y-scroll scrollbar-hide">
-              <% habit.members.forEach(member => { %>
+               <% habit.members.forEach(member => { %>
                <div class="w-full h-[60px] bg-gray-50 flex items-center px-[10px] justify-between gap-[20px]">
                  <div class="w-[45px] h-[45px] bg-gray-200 flex justify-center items-center rounded-full">
                    <img src="/public/images/person.png" alt="" class="h-[30px]">
@@ -279,7 +280,7 @@
 
            <div class="w-[100%] h-16 py-2 absolute bottom-[10px] flex justify-center">
              <!--complete habit-->
-             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl" id="habitComplete">
+             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl habitComplete" >
                Complete Habit
              </button>
            </div>
@@ -306,17 +307,18 @@
 
 
              <div class="w-16 h-16 bg-pink-500 rounded-full flex justify-center items-center cursor-pointer">
-               <button class="text-[60px] text-black m-0" onclick="my_modal_3.showModal()"><img src="/public/images/add.png" alt=""
-                   class="w-[50px]"></button>
+               <button class="text-[60px] text-black m-0" onclick="my_modal_3.showModal()"><img
+                   src="/public/images/add.png" alt="" class="w-[50px]"></button>
                <!--popup on click to create a new group-->
 
 
                <form action="/create-habit" , method="post">
                  <dialog id="my_modal_3" class="modal w-full">
                    <div class="modal-box bg-gray-300 flex flex-col items-center justify-center h-max">
-                       <button id="close_button" type="button" class="btn btn-xl btn-circle btn-ghost absolute right-2 top-2 text-black text-xl">
-                         ✕
-                       </button>
+                     <button id="close_button" type="button"
+                       class="btn btn-xl btn-circle btn-ghost absolute right-2 top-2 text-black text-xl">
+                       ✕
+                     </button>
 
                      <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
                        <!--name-->
@@ -386,48 +388,70 @@
              
           </div> -->
        <script>
-         const activity = document.querySelector('#activity')
-         const leaderboard = document.querySelector('#leaderboard')
-         const about = document.querySelector('#about')
-         const aboutInfo = document.querySelector('#aboutInfo')
-         const activityStatus = document.querySelector('#activityStatus')
-         const leaderboardRank = document.querySelector('#leaderboardRank')
-         const habitComplete = document.querySelector('#habitComplete')
          const dialog = document.getElementById('my_modal_3');
          const closeButton = document.getElementById('close_button');
 
-        closeButton.addEventListener('click', () => {
-            dialog.close();
-          });
+         closeButton.addEventListener('click', () => {
+           dialog.close();
+         });
+         const activity = Array.from(document.querySelectorAll('.activity'));
+         const leaderboard = Array.from(document.querySelectorAll('.leaderboard'));
+         const about = Array.from(document.querySelectorAll('.about'));
+         const aboutInfo = Array.from(document.querySelectorAll('.aboutInfo'));
+         const activityStatus = Array.from(document.querySelectorAll('.activityStatus'));
+         const leaderboardRank = Array.from(document.querySelectorAll('.leaderboardRank'));
+         const habitComplete = document.querySelectorAll('.habitComplete');
 
-         activity.addEventListener('click', () => {
-           activityStatus.style.display = 'block'
-           leaderboardRank.style.display = 'none'
-           aboutInfo.style.display = 'none'
-           activity.classList.add('bg-gray-400')
-           leaderboard.classList.remove('bg-gray-400')
-           about.classList.remove('bg-gray-400')
-         })
-         leaderboard.addEventListener('click', () => {
-           activityStatus.style.display = 'none'
-           leaderboardRank.style.display = 'block'
-           aboutInfo.style.display = 'none'
-           activity.classList.remove('bg-gray-400')
-           leaderboard.classList.add('bg-gray-400')
-           about.classList.remove('bg-gray-400')
-         })
-         about.addEventListener('click', () => {
-           activityStatus.style.display = 'none'
-           leaderboardRank.style.display = 'none'
-           aboutInfo.style.display = 'block'
-           activity.classList.remove('bg-gray-400')
-           leaderboard.classList.remove('bg-gray-400')
-           about.classList.add('bg-gray-400')
-         })
+         const addClass = (elements, className) => {
+           elements.classList.add(className)
+         };
 
-         habitComplete.addEventListener('click', () => {
-           habitComplete.innerHTML = 'Completed'
-         })
+         const removeClass = (elements, className) => {
+           elements.classList.remove(className)
+         };
+
+         activity.forEach((e) => {
+           e.addEventListener('click', (event) => {
+             event.preventDefault();
+             e.classList.add('bg-gray-400')
+             removeClass(activityStatus[activity.indexOf(e)], 'hidden');
+             addClass(leaderboardRank[activity.indexOf(e)], 'hidden');
+             addClass(aboutInfo[activity.indexOf(e)], 'hidden');
+             removeClass(leaderboard[activity.indexOf(e)], 'bg-gray-400');
+             removeClass(about[activity.indexOf(e)], 'bg-gray-400');
+           });
+         });
+
+         leaderboard.forEach((e) => {
+           e.addEventListener('click', (event) => {
+             event.preventDefault();
+             e.classList.add('bg-gray-400')
+             addClass(activityStatus[leaderboard.indexOf(e)], 'hidden');
+             removeClass(leaderboardRank[leaderboard.indexOf(e)], 'hidden');
+             addClass(aboutInfo[leaderboard.indexOf(e)], 'hidden');
+             removeClass(activity[leaderboard.indexOf(e)], 'bg-gray-400');
+             removeClass(about[leaderboard.indexOf(e)], 'bg-gray-400');
+           });
+         });
+
+         about.forEach((e) => {
+           e.addEventListener('click', (event) => {
+             event.preventDefault();
+             e.classList.add('bg-gray-400')
+
+             addClass(activityStatus[about.indexOf(e)], 'hidden');
+             addClass(leaderboardRank[about.indexOf(e)], 'hidden');
+             removeClass(aboutInfo[about.indexOf(e)], 'hidden');
+             removeClass(activity[about.indexOf(e)], 'bg-gray-400');
+             removeClass(leaderboard[about.indexOf(e)], 'bg-gray-400');
+           });
+         });
+
+         habitComplete.forEach((e) => {
+           e.addEventListener('click', (event) => {
+             event.target.innerHTML = 'Completed';
+           });
+         });
        </script>
      </body>
 
