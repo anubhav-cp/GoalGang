@@ -1,0 +1,480 @@
+     <!DOCTYPE html>
+     <html lang="en">
+
+     <head>
+       <meta charset="UTF-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <link rel="stylesheet" href="main.css" />
+       <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+       <script src="https://cdn.tailwindcss.com"></script>
+       <title>Buddy Crush</title>
+       <style>
+         .scrollbar-hide {
+           -ms-overflow-style: none;
+           /* IE and Edge */
+           scrollbar-width: none;
+           /* Firefox */
+         }
+
+         .scrollbar-hide::-webkit-scrollbar {
+           display: none;
+           /* Safari and Chrome */
+         }
+       </style>
+     </head>
+
+     <body>
+
+
+
+       <div class="w-full border bg-slate-100 h-36 flex flex-row justify-center items-center text-black">
+         <nav class="flex felx-row h-16 w-2/5 bg-gray-50 justify-between px-7 items-center rounded-[100px] shadow-xl">
+           <!--navbar-->
+           <div class="flex flex-row w-5/12 justify-around">
+             <img class=" cursor-pointer w-10 h-10" src="/public/images/internet.png">
+             <!--logo-->
+             <h3 class="text-2xl font-bold cursor-context-menu">Buddy Crush</h3>
+           </div>
+           <div class="w-12 h-12 bg-red-300 text-4xl font-bold text-center rounded-full cursor-pointer">
+             A
+           </div>
+           <!--user credentials-->
+         </nav>
+       </div>
+
+
+
+
+
+       <div class="w-full bg-slate-100 h-[80vh] flex justify-around pt-5">
+         <!--middle of page-->
+
+         <% habits.forEach(habit => { %>
+         <div class="h-[90%] w-[25vw] relative bg-white rounded-xl shadow-2xl">
+           <!--  top section -->
+           <div class="w-full h-20 bg-white flex justify-between px-4 items-center">
+             <div class="flex justify-between w-[70%]">
+               <!--  group info -->
+
+               <h2 class="text-xl font-bold text-black"><%- habit.name %></h2>
+               <!--group name-->
+               <div class="w-12 h-8 bg-gray-200 flex justify-evenly items-center rounded-3xl">
+                 <!--no of people in group-->
+                 <img src="/public/images//public/images/person.png" alt="" class="w-[20px] h-[20px]" />
+                 <span class="text-xl font-bold text-black">6</span>
+               </div>
+               <div class="w-12 bg-gray-200 h-8 p-1 rounded-3xl flex justify-center items-center">
+                 <!--public group-->
+                 <img src="./internet.png" alt="" class="w-[20px]" />
+               </div>
+             </div>
+             <div class="w-10 h-10 bg-pink-400 rounded-full flex justify-center items-center">
+               <!--  add people -->
+               <img src="/public/images//public/images/person.png" alt="" class="w-7" />
+             </div>
+           </div>
+
+
+           <div class="w-full flex justify-center">
+             <!-- class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black" -->
+             <!--leaderboard and shit-->
+             <ul class="menu menu-horizontal bg-gray-200 rounded-3xl w-[100%] flex justify-around text-black">
+               <li class="rounded-lg bg-gray-400" id="activity">
+                 <!--activity section-->
+                 <a>
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                       d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                   </svg>
+                   Activity
+                 </a>
+               </li>
+               <li class="rounded-lg" id="leaderboard">
+                 <!--leaderboard-->
+                 <a>
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                   </svg>
+                   Leaderboard
+                 </a>
+               </li>
+               <li class="rounded-lg" id="about">
+                 <!--about-->
+                 <a>
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                       d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                   </svg>
+                   About
+                 </a>
+               </li>
+             </ul>
+           </div>
+           <div class="w-full h-[75%] bg-gray-50 hidden" id="leaderboardRank">
+             <!--leaderboard to display on leaderboard click-->
+             <div class="w-full h-full overflow-y-scroll scrollbar-hide cursor-pointer">
+
+
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <!--leaderboard cards-->
+                 <img src="gold.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <img src="silver.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <img src="bronze.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">3</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">4</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">5</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">6</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">7</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-lg">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div
+                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
+                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">8</span>
+                 <div>
+
+                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl">Test Email</span>
+                 </div>
+                 <span class="text-black  font-bold text-xl">1</span>
+               </div>
+               <div class="mb-[60px] bg-gray-50">
+                 <p class="text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, quidem.
+                 </p>
+               </div>
+
+             </div>
+           </div>
+           <!--leaderboard finish-->
+           <div id="aboutInfo" class="w-full h-[63%] bg-gray-100 hidden">
+             <!--about start-->
+             <div class="w-full h-full flex flex-col px-[10px] pt-5 overflow-y-scroll">
+               <div>
+                 <p class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, eius.</p>
+                 <span class="text-gray-500">created on august 06, 2023</span>
+
+               </div>
+               <span class="text-black">
+                 <img src="internet.png" alt="" class="w-[15px] inline-block">
+                 This group is public</span>
+               <div class="flex flex-row justify-around">
+                 <div class="text-black ">
+                   <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                   <span class="text-black">239</span>members
+                 </div>
+                 <!--no of group participants-->
+                 <div class="">
+                   <!--group members list-->
+                   <div>
+                     <!--group member names-->
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                   <div>
+                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
+                     <span class="text-black">Anubhav Tiwari</span>
+                   </div>
+                 </div>
+                 <!--group member names finished-->
+               </div>
+               <div class="w-full flex justify-end pr-[10px] mb-[20px]">
+                 <button class="h-9 w-20 text-xl bg-gray-300 text-black rounded-lg cursor-pointer">Leave </button>
+               </div>
+             </div>
+
+           </div>
+           <!--about finsh-->
+           <div id="activityStatus" class="w-full h-[63%]">
+             <!--activity start-->
+             
+             <div class="w-full h-full overflow-y-scroll scrollbar-hide">
+              <% habit.members.forEach(member => { %>
+               <div class="w-full h-[60px] bg-gray-50 flex items-center px-[10px] justify-between gap-[20px]">
+                 <div class="w-[45px] h-[45px] bg-gray-200 flex justify-center items-center rounded-full">
+                   <img src="/public/images/person.png" alt="" class="h-[30px]">
+                 </div>
+                 <div class="flex flex-col flex-auto text-black">
+                   <span class="text-lg"><%= member.name %></span>
+                   <span class="text-gray-500 text-sm">Completed 10 days ago</span>
+                 </div>
+               </div>
+               <% }) %>
+             </div>
+           </div>
+           <!-- <div class="w-full relative h-[80%] "> -->
+
+
+           <div class="w-[100%] h-16 py-2 absolute bottom-[10px] flex justify-center">
+             <!--complete habit-->
+             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl" id="habitComplete">
+               Complete Habit
+             </button>
+           </div>
+
+
+         </div>
+         <% }) %>
+
+
+
+
+         <div class="w-[30vw] h-[90%] flex flex-col justify-between items-center py-[10px]">
+           <!--side things where buttons are to create group and discover group-->
+           <div class="w-[90%] h-[45%] bg-gray-50 rounded-xl flex justify-center items-center flex-col shadow-xl">
+             <h3 class="text-black font-bold text-xl">Discover groups</h3>
+             <div class="w-16 h-16 bg-pink-500 rounded-full flex justify-center items-center cursor-pointer">
+               <img src="/public/images/person.png" alt="" class="w-[50px]" />
+             </div>
+           </div>
+
+
+           <div class="w-[90%] h-[45%] bg-gray-50 rounded-xl flex flex-col justify-center items-center shadow-xl">
+             <h3 class="text-black font-bold text-xl">Create new group</h3>
+
+
+             <div class="w-16 h-16 bg-pink-500 rounded-full flex justify-center items-center cursor-pointer">
+               <button class="text-[60px] text-black m-0" onclick="my_modal_3.showModal()"><img src="/public/images/add.png" alt=""
+                   class="w-[50px]"></button>
+               <!--popup on click to create a new group-->
+
+
+               <form action="/create-habit" , method="post">
+                 <dialog id="my_modal_3" class="modal w-full">
+                   <div class="modal-box bg-gray-300 flex flex-col items-center justify-center h-max">
+                     <form method="dialog">
+                       <button class="btn btn-xl btn-circle btn-ghost absolute right-2 top-2 text-black text-xl">
+                         ✕
+                       </button>
+                     </form>
+
+                     <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
+                       <!--name-->
+                       <div class="label">
+                         <span class="label-text text-black text-xl">Name</span>
+                       </div>
+                       <input type="text" name="name" required placeholder="Type here"
+                         class="input input-bordered w-[100%] bg-gray-400 text-black" />
+                       <!--enter group name-->
+                     </label>
+
+                     <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
+                       <!--descreption-->
+                       <div class="label">
+                         <span class="label-text text-black text-xl">Description</span>
+                       </div>
+                       <textarea placeholder="Type here" name="description"
+                         class="input-border w-[100%] p-2 rounded-xl bg-gray-400 text-black" cols="5"
+                         rows="8"></textarea>
+                       <!--enter group description-->
+                     </label>
+
+                     <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
+                       <!--visibility-->
+                       <div class="label">
+                         <span class="label-text text-black text-xl">Visibility</span>
+                       </div>
+
+                       <select name="visibility"
+                         class="select select-ghost w-[100%] bg-gray-400 text-black focus:text-black">
+
+                         <option class="text-black" value="Public">Public</option>
+                         <option class="text-black" value="Private">Private</option>
+                       </select>
+                       <!--select visibility-->
+                     </label>
+
+                     <!-- <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
+                        <div class="label">
+                          <span class="label-text text-black text-xl">Category</span>
+                        </div>
+      
+                        <select class="select select-primary w-[100%] bg-gray-400 text-black">
+                          <option disabled selected>Help users find your group</option>
+                          <option>Health</option>
+                          <option>Educational</option>
+                          <option>Self Improvement</option>
+                          <option>Financial</option>
+                        </select>
+                      </label> -->
+                     <button class="btn btn-wide w-[90%] mt-2 bg-gray-600 text-white" type="submit">Create
+                       Group</button>
+                     <!--submit form for creating ew group-->
+                   </div>
+                 </dialog>
+               </form>
+
+
+
+             </div>
+           </div>
+
+
+         </div>
+       </div>
+       <!-- <div class="w-full h-[100vh] bg-gray-400 absolute">
+             
+          </div> -->
+       <script>
+         const activity = document.querySelector('#activity')
+         const leaderboard = document.querySelector('#leaderboard')
+         const about = document.querySelector('#about')
+         const aboutInfo = document.querySelector('#aboutInfo')
+         const activityStatus = document.querySelector('#activityStatus')
+         const leaderboardRank = document.querySelector('#leaderboardRank')
+         const habitComplete = document.querySelector('#habitComplete')
+
+         activity.addEventListener('click', () => {
+           activityStatus.style.display = 'block'
+           leaderboardRank.style.display = 'none'
+           aboutInfo.style.display = 'none'
+           activity.classList.add('bg-gray-400')
+           leaderboard.classList.remove('bg-gray-400')
+           about.classList.remove('bg-gray-400')
+         })
+         leaderboard.addEventListener('click', () => {
+           activityStatus.style.display = 'none'
+           leaderboardRank.style.display = 'block'
+           aboutInfo.style.display = 'none'
+           activity.classList.remove('bg-gray-400')
+           leaderboard.classList.add('bg-gray-400')
+           about.classList.remove('bg-gray-400')
+         })
+         about.addEventListener('click', () => {
+           activityStatus.style.display = 'none'
+           leaderboardRank.style.display = 'none'
+           aboutInfo.style.display = 'block'
+           activity.classList.remove('bg-gray-400')
+           leaderboard.classList.remove('bg-gray-400')
+           about.classList.add('bg-gray-400')
+         })
+
+         habitComplete.addEventListener('click', () => {
+           habitComplete.innerHTML = 'Completed'
+         })
+       </script>
+     </body>
+
+     </html>
