@@ -29,4 +29,14 @@ router.post('/join-habit',  async(req, res)=>{
     }
 })
 
+router.get('/leave-habit/:id', loggedIn, async(req, res)=>{
+    const userId = req.user._id
+    const habitId = req.params.id
+    console.log(habitId)
+
+    const removeMember = await Habit.updateOne({_id: habitId}, { $pull: {
+        members: userId
+    }})
+    res.redirect('/')
+})
 export default router

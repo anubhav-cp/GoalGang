@@ -9,8 +9,14 @@ router.get('/', async(req, res)=>{
     try{
     const user = req.user
     const userhabits = await Habit.find({members: user.id}).populate('members').exec()
+    const habitsWithMemberCount = userhabits.map(habit => {
+        return {
+          ...habit.toObject(), // Convert Mongoose document to plain object
+          memberCount: habit.members.length
+        };
+      });
     console.log('this is yser ha', userhabits)
-    res.render('index.ejs', {'habits': userhabits})
+    res.render('index.ejs', {'habits': habitsWithMemberCount, 'user': user})
     } catch(error){
         res.render('index.ejs')
         console.log('something went wrong')

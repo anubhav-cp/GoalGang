@@ -38,7 +38,7 @@
              <h3 class="text-2xl font-bold cursor-context-menu">Buddy Crush</h3>
            </div>
            <div class="w-12 h-12 bg-red-300 text-4xl font-bold text-center rounded-full cursor-pointer">
-             A
+             <img class="rounded-full" src="<%= user.avatar %>">
            </div>
            <!--user credentials-->
          </nav>
@@ -62,17 +62,17 @@
                <!--group name-->
                <div class="w-12 h-8 bg-gray-200 flex justify-evenly items-center rounded-3xl">
                  <!--no of people in group-->
-                 <img src="/public/images//public/images/person.png" alt="" class="w-[20px] h-[20px]" />
-                 <span class="text-xl font-bold text-black">6</span>
+                 <img src="/public/images/person.png" alt="" class="w-[20px] h-[20px]" />
+                 <span class="text-xl font-bold text-black"><%= habit.memberCount %></span>
                </div>
                <div class="w-12 bg-gray-200 h-8 p-1 rounded-3xl flex justify-center items-center">
                  <!--public group-->
-                 <img src="./internet.png" alt="" class="w-[20px]" />
+                 <img src="/public/images/internet.png" alt="" class="w-[20px]" />
                </div>
              </div>
              <div class="w-10 h-10 bg-pink-400 rounded-full flex justify-center items-center">
                <!--  add people -->
-               <img src="/public/images//public/images/person.png" alt="" class="w-7" />
+               <img src="/public/images/person.png" alt="" class="w-7" />
              </div>
            </div>
 
@@ -124,10 +124,10 @@
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
                  <!--leaderboard cards-->
-                 <img src="gold.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <img src="/public/images/gold.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
                  <div>
 
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
                    <span class="text-black text-xl">Test Email</span>
                  </div>
                  <span class="text-black  font-bold text-xl">1</span>
@@ -135,20 +135,20 @@
 
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <img src="silver.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <img src="/public/images/silver.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
                  <div>
 
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
                    <span class="text-black text-xl">Test Email</span>
                  </div>
                  <span class="text-black  font-bold text-xl">1</span>
                </div>
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <img src="bronze.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <img src="/public/images/bronze.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
                  <div>
 
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
                    <span class="text-black text-xl">Test Email</span>
                  </div>
                  <span class="text-black  font-bold text-xl">1</span>
@@ -158,7 +158,7 @@
                  <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">3</span>
                  <div>
 
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
+                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
                    <span class="text-black text-xl">Test Email</span>
                  </div>
                  <span class="text-black  font-bold text-xl">1</span>
@@ -235,73 +235,23 @@
                <div class="flex flex-row justify-around">
                  <div class="text-black ">
                    <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                   <span class="text-black">239</span>members
+                   <span class="text-black"><%= habit.memberCount %></span>
                  </div>
                  <!--no of group participants-->
                  <div class="">
                    <!--group members list-->
+                   <% habit.members.forEach(member => { %>
                    <div>
                      <!--group member names-->
                      <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
+                     <span class="text-black"><%= member.name %></span>
                    </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
-                   <div>
-                     <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black">Anubhav Tiwari</span>
-                   </div>
+                   <% }) %>
                  </div>
                  <!--group member names finished-->
                </div>
                <div class="w-full flex justify-end pr-[10px] mb-[20px]">
-                 <button class="h-9 w-20 text-xl bg-gray-300 text-black rounded-lg cursor-pointer">Leave </button>
+                 <a href="/leave-habit/<%= habit._id %>" class="h-9 w-20 text-xl bg-gray-300 text-black rounded-lg cursor-pointer">Leave </a>
                </div>
              </div>
 
@@ -364,11 +314,9 @@
                <form action="/create-habit" , method="post">
                  <dialog id="my_modal_3" class="modal w-full">
                    <div class="modal-box bg-gray-300 flex flex-col items-center justify-center h-max">
-                     <form method="dialog">
-                       <button class="btn btn-xl btn-circle btn-ghost absolute right-2 top-2 text-black text-xl">
+                       <button id="close_button" type="button" class="btn btn-xl btn-circle btn-ghost absolute right-2 top-2 text-black text-xl">
                          ✕
                        </button>
-                     </form>
 
                      <label class="form-control w-[90%] flex flex-col items-baseline mb-4">
                        <!--name-->
@@ -445,6 +393,12 @@
          const activityStatus = document.querySelector('#activityStatus')
          const leaderboardRank = document.querySelector('#leaderboardRank')
          const habitComplete = document.querySelector('#habitComplete')
+         const dialog = document.getElementById('my_modal_3');
+         const closeButton = document.getElementById('close_button');
+
+        closeButton.addEventListener('click', () => {
+            dialog.close();
+          });
 
          activity.addEventListener('click', () => {
            activityStatus.style.display = 'block'
