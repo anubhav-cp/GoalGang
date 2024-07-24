@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { User } from "./users.js";
+import User from "./users.js";
+
 
 const habitSchema = new Schema({
     name: {
@@ -15,12 +16,23 @@ const habitSchema = new Schema({
         default: 'Private'
     },
     members : [{
-        type: Schema.Types.ObjectId,
-        ref: User
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        points: {
+            type: Number,
+            default: 0
+        },
+        badges: {
+            type: String,
+            enum: ['gold', 'silver', 'bronze', 'none'],
+            Default: 'none'
+        }
     }],
     host: {
         type: Schema.Types.ObjectId,
-        ref: User,
+        ref: 'User',
         required: true,
     },
     created_at: {
@@ -29,4 +41,5 @@ const habitSchema = new Schema({
     }
 })
 
-export const Habit = mongoose.model('habit', habitSchema)
+const Habit = mongoose.model('habit', habitSchema)
+export default Habit

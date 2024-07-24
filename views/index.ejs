@@ -39,6 +39,7 @@
            </div>
            <div class="w-12 h-12 bg-red-300 text-4xl font-bold text-center rounded-full cursor-pointer">
              <img class="rounded-full" src="<%= user.avatar %>">
+            <img class="rounded-full" src="">
            </div>
            <!--user credentials-->
          </nav>
@@ -122,8 +123,6 @@
            <div class="w-full h-[75%] bg-gray-50 hidden leaderboardRank">
              <!--leaderboard to display on leaderboard click-->
              <div class="w-full h-full overflow-y-scroll scrollbar-hide cursor-pointer">
-
-
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
                  <!--leaderboard cards-->
@@ -131,10 +130,11 @@
                  <div>
 
                    <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
+                   <span class="text-black text-xl"><%= user.name %></span>
                  </div>
-                 <span class="text-black  font-bold text-xl">1</span>
+                 <span class="text-black  font-bold text-xl"></span>
                </div>
+
 
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
@@ -247,7 +247,7 @@
                    <div>
                      <!--group member names-->
                      <img src="/public/images/person.png" alt="" class="w-[20px] inline-block">
-                     <span class="text-black"><%= member.name %></span>
+                     <span class="text-black"><%= member.user.name %></span>
                    </div>
                    <% }) %>
                  </div>
@@ -271,7 +271,7 @@
                    <img src="/public/images/person.png" alt="" class="h-[30px]">
                  </div>
                  <div class="flex flex-col flex-auto text-black">
-                   <span class="text-lg"><%= member.name %></span>
+                   <span class="text-lg"><%= member.user.name %></span>
                    <span class="text-gray-500 text-sm">Completed 10 days ago</span>
                  </div>
                </div>
@@ -283,9 +283,9 @@
 
            <div class="w-[100%] h-16 py-2 absolute bottom-[10px] flex justify-center">
              <!--complete habit-->
-             <button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl habitComplete">
+             <a href="/complete-habit/<%= habit._id %>"><button class="btn btn-block w-[95%] bg-blue-800 text-white font-xl habitComplete">
                Complete Habit
-             </button>
+             </button></a>
            </div>
 
 

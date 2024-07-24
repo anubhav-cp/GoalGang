@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     name: {
         type: String, 
     },
@@ -17,10 +17,15 @@ const userSchema = new mongoose.Schema({
     avatar: {
         type: String,
     },
+    habits: [{
+        type: Schema.Types.ObjectId,
+        ref: 'habit'
+    }],
     created_at: {
         type: Date,
         default: Date.now()
     }
 })
 
-export const User = mongoose.model('user', userSchema)
+const User = mongoose.model('User', userSchema);
+export default User;
