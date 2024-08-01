@@ -73,8 +73,9 @@
              </div>
              <div id="copy-url-container" class="w-10 h-10 bg-pink-400 hover:bg-sky-300 rounded-full flex justify-center items-center cursor-pointer" onclick="copyUrl()">
               <!-- public group -->
-              <span id="url-text" hidden>http://localhost:3000/join-habit/<%= habit._id %></span>
+              <span id="url-text" class="hidden">http://localhost:3000/join-habit/<%= habit._id %></span>
                 <img src="/public/images/person.png" alt="" class="w-[20px]" />
+
               </button>
             </div>
             
@@ -123,99 +124,28 @@
            <div class="w-full h-[75%] bg-gray-50 hidden leaderboardRank">
              <!--leaderboard to display on leaderboard click-->
              <div class="w-full h-full overflow-y-scroll scrollbar-hide cursor-pointer">
+
+               <% habit.members.forEach((member, index) => { %>
                <div
                  class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <!--leaderboard cards-->
-                 <img src="/public/images/gold.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
+                 <% if (index === 0) { %>
+                  <img src="/public/images/gold.png" alt="Gold Medal" class="w-[30px] inline-block">
+              <% } else if (index === 1) { %>
+                  <img src="/public/images/silver.png" alt="Silver Medal" class="w-[30px] inline-block">
+              <% } else if (index === 2) { %>
+                  <img src="/public/images/bronze.png" alt="Bronze Medal" class="w-[30px] inline-block">
+              <% } else { %>
+                <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]"><%= index+1 %>
+              <% } %>
+                 
                  <div>
 
-                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl"><%= user.name %></span>
+                   <img src="<%= member.user.avatar %>" alt="" class="w-[30px] inline-block">
+                   <span class="text-black text-xl"><%= member.user.name  %></span>
                  </div>
-                 <span class="text-black  font-bold text-xl"></span>
+                 <span class="text-black  font-bold text-xl"><%= member.points %></span>
                </div>
-
-
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <img src="/public/images/silver.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
-                 <div>
-
-                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <img src="/public/images/bronze.png" alt="" class="w-[30px] h-[30px]  mr-[10%]">
-                 <div>
-
-                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">3</span>
-                 <div>
-
-                   <img src="/public/images/internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">4</span>
-                 <div>
-
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">5</span>
-                 <div>
-
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">6</span>
-                 <div>
-
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">7</span>
-                 <div>
-
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-lg">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
-               <div
-                 class="w-full h-[60px] bg-gray-50 px-[10px] flex items-center justify-around border-b-[1px] border-[#020202]">
-                 <span class="text-black text-2xl font-bold w-[30px] h-[30px]  mr-[10%]">8</span>
-                 <div>
-
-                   <img src="internet.png" alt="" class="w-[30px] inline-block">
-                   <span class="text-black text-xl">Test Email</span>
-                 </div>
-                 <span class="text-black  font-bold text-xl">1</span>
-               </div>
+               <% }) %>
                <div class="mb-[60px] bg-gray-50">
                  <p class="text-black">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam, quidem.
                  </p>
@@ -267,8 +197,8 @@
              <div class="w-full h-full overflow-y-scroll scrollbar-hide">
                <% habit.members.forEach(member => { %>
                <div class="w-full h-[60px] bg-gray-50 flex items-center px-[10px] justify-between gap-[20px]">
-                 <div class="w-[45px] h-[45px] bg-gray-200 flex justify-center items-center rounded-full">
-                   <img src="/public/images/person.png" alt="" class="h-[30px]">
+                 <div class="w-[40px] h-[40px] bg-gray-200 flex justify-center items-center rounded-full overflow-hidden">
+                   <img id='avatarImage' src="<%= member.user.avatar %>" alt="" class="h-[40px]">
                  </div>
                  <div class="flex flex-col flex-auto text-black">
                    <span class="text-lg"><%= member.user.name %></span>
@@ -278,6 +208,7 @@
                <% }) %>
              </div>
            </div>
+           
            <!-- <div class="w-full relative h-[80%] "> -->
 
 
@@ -470,6 +401,7 @@
              event.target.innerHTML = 'Completed';
            });
          });
+
        </script>
      </body>
 

@@ -42,8 +42,9 @@ const joinHabit = async (req, res) => {
 
 const addPointToMember = async(habitId, userId)=>{
     try {
-      const habitGroup = await Habit.findbyId(habitId)
-      const member = await habitGroup.members.find(m => m.user.toString() === userId)
+      const habitGroup = await Habit.findById(habitId)
+      const member = await habitGroup.members.find(m => m.user.toString() === userId.toString())
+      console.log('this is member', member)
 
       if(member){
         member.points += 1

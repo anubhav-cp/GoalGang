@@ -14,7 +14,7 @@ router.get('/complete-habit/:id', async(req, res)=>{
     const habitId = req.params.id
     const userId = req.user._id
     await habitController.addPointToMember(habitId, userId)
-    res.send("Point added Successfully")
+    res.redirect('/')
 })
 
 
